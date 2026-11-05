@@ -38,6 +38,16 @@
     behaviors {
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        backspacek {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <33 20>;
+            layers = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -56,9 +66,9 @@
 
         layer_1 {
             bindings = <
-&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &kp UP_ARROW    &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
+&kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &kp UP_ARROW    &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &kp DELETE
 &trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &kp DOWN        &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
-&trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &kp LEFT_ARROW  &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
+&kp CAPS    &kp TILDE        &trans          &trans           &trans           &mkp MB5           &kp LEFT_ARROW  &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
 &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &kp RIGHT       &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
 &kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &kp RET         &trans           &trans           &trans      &trans     &trans
             >;
@@ -81,12 +91,14 @@
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESC         &kp F1      &kp F2     &kp F3            &kp F4             &kp F5             &trans  &kp F6        &kp F7  &kp F8  &kp F9  &kp F10   &kp F11
+&kp TAB         &kp HOME    &kp PG_UP  &kp UP            &kp PG_DN          &kp LC(TAB)        &trans  &msc SCRL_UP  &trans  &trans  &trans  &kp DEL   &kp DEL
+&kp TAB         &kp END     &kp LEFT   &kp DOWN          &kp RIGHT          &kp LG(TAB)        &trans  &trans        &trans  &trans  &trans  &kp RET   &trans
+&kp LEFT_SHIFT  &kp K_MUTE  &trans     &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))  &kp LS(LC(TAB))    &trans  &kp LC(TAB)   &trans  &trans  &trans  &kp FSLH  &trans
+&kp LC(TAB)     &trans      &trans     &trans            &trans             &trans             &trans  &trans        &trans  &trans  &trans  &trans
             >;
+
+            sensor-bindings = <&scroll_encoder>;
         };
     };
 };
